@@ -1,34 +1,20 @@
 function palindrome(str) {
 
-    str = str.toLowerCase();
-    str = str.replace(",", "");
-    str = str.replace(".", "");
-    str = str.replace("_", "");
-    str = str.replace("-", "");
-    str = str.replace(":", "");
-    str = str.replace(";", "");
-    str = str.replace(" ", "");
     
-    const a = str.split("");
-    //console.log(a);
+  let reversedStr = [];
 
-    const b = [...a].reverse().join("");
-    //console.log(b);
+  let d = str.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+for (let i = d.length - 1; i >= 0; i--) {
+ reversedStr.push(d[i]);
+}
 
-    const c = [...a].join(" ");
-    //console.log(c);
-
-    var len = b.length;
-    var mid = Math.floor(len/2);
-    
-    for(var i=0; i<= len; i++){
-      if(b[i] === c[i]){
-        return true;
-      }
-    
-      return false;
-    }
-    }
+for (let j = 0; j < str.length; j++) {
+ if (reversedStr[j] !== d[j]) {
+   return false;
+ }
+}
+return true;
+ }
     
     console.log(palindrome("eye"));
     console.log(palindrome("almostomla"));
